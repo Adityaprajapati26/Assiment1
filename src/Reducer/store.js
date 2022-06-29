@@ -1,10 +1,8 @@
-import {legacy_createStore as createStore,combineReducers} from 'redux'
+import {legacy_createStore , compose} from 'redux'
 import { todoReducer } from "./reducer";
+const composeEnhancers= window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const Store=legacy_createStore(todoReducer,composeEnhancers())
 
 
-const  rootreducer=combineReducers({todos:todoReducer})
-export const Store=createStore(
-    rootreducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  
 
-);

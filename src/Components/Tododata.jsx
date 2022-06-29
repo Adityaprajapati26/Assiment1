@@ -1,30 +1,31 @@
+import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+
 import { useParams } from 'react-router-dom'
 
 const Tododata = () => {
   const {id}=useParams()
-  const{todos}=useSelector((state)=>state.todos)
-  
+  // const{todos}=useSelector((state)=>state.todos)
   const[data,setData]=useState([])
+  
   useEffect(()=>{
-    fetch(` http://localhost:8080/todos/${id}`)
-    .then((r)=>r.json())
+    axios.get(` http://localhost:8080/todos/${id}`)
+ 
     .then((d)=>{
-      console.log(d)
-      setData(d)})
+      console.log(d.data)
+      setData(d.data)})
 
   },[id])
-  const[current]=useState(()=>{
-    return todos.find((item)=>item.id)
-  })
-  // console.log(data)
+ 
+  
+  console.log(data)
   return (
     <div>
-      
+      Single
         <p>{data.title}</p>
+        <p>{data.id}</p>
         <p>{data.status}</p>
        
     </div>

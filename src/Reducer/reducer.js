@@ -1,4 +1,4 @@
-import { GET_TODOS_LOADING,GET_TODOS_SUCCESS,GET_TODOS_ERROR } from "./action";
+import { GET_TODOS_LOADING,GET_TODOS_SUCCESS,GET_TODOS_ERROR,ADD_TODOS_ERROR,ADD_TODOS_LOADING,ADD_TODOS_SUCCESS } from "./action";
 
 const initState={
     loading:false,
@@ -23,7 +23,7 @@ export const todoReducer=(state=initState,action)=>{
               ...state,
               loading:true,
               error:false,
-              todos:action.payload
+            
           }
 
       }
@@ -35,6 +35,33 @@ export const todoReducer=(state=initState,action)=>{
           }
 
       }
+      case ADD_TODOS_ERROR:{
+        return{
+            ...state,
+            loading:false,
+            error:true,
+            todos:[]
+
+        }
+    }
+    case ADD_TODOS_LOADING:{
+        return{
+            ...state,
+            loading:true,
+            error:false,
+           
+        }
+
+    }
+    case ADD_TODOS_SUCCESS:{
+        return{
+            ...state,
+            loading:false,
+            error:false,
+            
+        }
+
+    }
       default:{
           return{...state}
       }

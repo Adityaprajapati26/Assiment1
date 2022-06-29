@@ -5,15 +5,13 @@ import Tododata from './Components/Tododata';
 import Todoitem from './Components/Todoitem';
 import Todo from './Components/Todo';
 import Navbar from './Components/Navbar';
+import MainRoute from './Routes/MainRoute';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-   <Routes>
-    <Route path='/' element={<Todoitem/>}/>
-    <Route path="/Todo" element={<Todo/>}/>
-    <Route path="/Todo/:id" element={<Tododata/>}/>
-   </Routes>
+      {/* <Navbar/> */}
+  <MainRoute/>
+   {/* <Todo/> */}
     </div>
   );
 }
